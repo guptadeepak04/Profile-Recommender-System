@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Alumni Recommendation System</h1>
+    <form method="POST">
+        <label for="university_name">Enter University Name:</label>
+        <input type="text" id="university_name" name="university_name" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    {% if recommendations %}
+        <h2>Recommended Alumni:</h2>
+        <ul>
+        {% for alumni in recommendations %}
+            <li>
+                <strong>Name:</strong> {{ alumni['Name of Student'] }}<br>
+                <strong>University:</strong> {{ alumni['University'] }}<br>
+                <strong>Job Title:</strong> {{ alumni['Job Title'] }}<br>
+                <strong>Company:</strong> {{ alumni['Company'] }}<br>
+                <strong>Skills:</strong> {{ alumni['Technical and Non-technical Skills'] }}<br>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
